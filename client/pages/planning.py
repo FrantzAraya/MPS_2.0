@@ -7,6 +7,7 @@ from datetime import date
 import flet as ft
 
 from client.services.api_client import APIClient
+from client.utils import COLORS
 
 
 async def vista(container: ft.Container, api: APIClient) -> None:
@@ -14,7 +15,7 @@ async def vista(container: ft.Container, api: APIClient) -> None:
 
     loader = ft.Container(
         content=ft.ProgressRing(),
-        bgcolor=ft.Colors.with_opacity(0.5, ft.Colors.BLACK),
+        bgcolor=COLORS.with_opacity(0.5, COLORS.BLACK),
         alignment=ft.alignment.center,
         expand=True,
         visible=False,
