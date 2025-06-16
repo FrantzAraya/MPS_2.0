@@ -10,7 +10,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from server.main import iniciar_servidor_en_hilo
-from .pages import dashboard
+from client.pages import dashboard
 
 
 async def main(page: ft.Page) -> None:
