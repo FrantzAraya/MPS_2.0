@@ -8,7 +8,10 @@ from server.database import settings
 class APIClient:
     def __init__(self) -> None:
         self.base_url = f"http://127.0.0.1:{settings.api_port}"
-        self.client = httpx.AsyncClient(base_url=self.base_url)
+        # Follow redirects so API endpoints defined with trailing slashes work
+        self.client = httpx.AsyncClient(
+            base_url=self.base_url, follow_redirects=True
+        )
 
     async def get(self, ruta: str):
         resp = await self.client.get(ruta)
