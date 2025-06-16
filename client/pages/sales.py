@@ -14,7 +14,7 @@ async def vista(container: ft.Container, api: APIClient) -> None:
 
     loader = ft.Container(
         content=ft.ProgressRing(),
-        bgcolor=ft.colors.with_opacity(0.5, ft.colors.BLACK),
+        bgcolor=ft.Colors.with_opacity(0.5, ft.Colors.BLACK),
         alignment=ft.alignment.center,
         expand=True,
         visible=False,
