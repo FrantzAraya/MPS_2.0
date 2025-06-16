@@ -30,7 +30,7 @@ async def vista(page: ft.Page) -> None:
                 f"{r['unidades_vendidas']}u"
             )
             lista.controls.append(ft.Text(texto))
-        await page.update_async()
+        page.update()
 
     async def guardar(e) -> None:  # noqa: ANN001
         data = {

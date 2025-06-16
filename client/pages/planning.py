@@ -24,7 +24,7 @@ async def vista(page: ft.Page) -> None:
                 f"{r['id']} mat {r['material_id']} -> {r['orden_planificada']}"
             )
             lista.controls.append(ft.Text(texto))
-        await page.update_async()
+        page.update()
 
     page.controls.clear()
     page.controls.append(lista)

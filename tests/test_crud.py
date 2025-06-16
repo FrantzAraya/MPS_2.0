@@ -6,7 +6,10 @@ from server import crud, models
 from server.database import obtener_engine
 
 
-@pytest.fixture()
+import pytest_asyncio
+
+
+@pytest_asyncio.fixture()
 async def session():
     engine = obtener_engine(echo=False)
     async with engine.begin() as conn:

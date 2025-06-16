@@ -31,7 +31,7 @@ async def vista(page: ft.Page) -> None:
         for r in registros:
             texto = f"{r['id']} – prod {r['producto_id']} {r['fecha']} => {r['cantidad_final']}"
             lista.controls.append(ft.Text(texto))
-        await page.update_async()
+        page.update()
 
     async def guardar(e) -> None:  # noqa: ANN001
         data = {

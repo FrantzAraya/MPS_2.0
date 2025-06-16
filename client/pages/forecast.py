@@ -26,7 +26,7 @@ async def vista(page: ft.Page) -> None:
                 f"{r['id']} prod {r['producto_id']} -> {r['unidades_pronosticadas']}u"
             )
             lista.controls.append(ft.Text(texto))
-        await page.update_async()
+        page.update()
 
     async def generar(e) -> None:  # noqa: ANN001
         if not producto.value:
