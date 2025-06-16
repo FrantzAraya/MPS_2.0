@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import os
 from typing import AsyncGenerator
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -39,7 +40,13 @@ def obtener_ruta_db() -> str:
 
 
 def obtener_engine(echo: bool | None = None):
-    url = f"sqlite+aiosqlite:///{obtener_ruta_db()}"
+    """Crea un engine apuntando a la base de datos."""
+
+    if os.getenv("PYTEST_CURRENT_TEST"):
+        url = "sqlite+aiosqlite:///:memory:"
+    else:
+        url = f"sqlite+aiosqlite:///{obtener_ruta_db()}"
+
     engine = create_async_engine(
         url, echo=echo if echo is not None else settings.debug, future=True
     )
