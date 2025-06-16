@@ -1,6 +1,7 @@
 fastapi
 uvicorn[standard]
 sqlmodel
+aiosqlite
 httpx
 flet
 apscheduler
