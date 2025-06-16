@@ -17,7 +17,7 @@ async def vista(page: ft.Page, container: ft.Column, api: APIClient) -> None:
     async def cargar() -> None:
         datos = await api.get("/ventas/")
         lista.controls = [ft.Text(str(d)) for d in datos]
-        await page.update_async()
+        page.update()
 
     async def agregar(e) -> None:
         data = {

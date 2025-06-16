@@ -6,8 +6,9 @@ from pathlib import Path
 from typing import AsyncGenerator
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from sqlmodel import SQLModel, create_engine
+from sqlmodel import SQLModel
 from sqlmodel.ext.asyncio.session import AsyncSession
+from sqlalchemy.ext.asyncio import create_async_engine
 
 
 class Settings(BaseSettings):
@@ -38,8 +39,9 @@ def obtener_ruta_db() -> str:
 
 
 def obtener_engine(echo: bool | None = None):
+    """Crea un motor de base de datos asíncrono."""
     url = f"sqlite+aiosqlite:///{obtener_ruta_db()}"
-    engine = create_engine(
+    engine = create_async_engine(
         url, echo=echo if echo is not None else settings.debug, future=True
     )
     return engine
