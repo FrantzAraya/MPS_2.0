@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import AsyncGenerator
 
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlmodel import SQLModel, create_engine
 from sqlmodel.ext.asyncio.session import AsyncSession
 
@@ -15,9 +15,10 @@ class Settings(BaseSettings):
     debug: bool = False
     db_url: str | None = None
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
 
 
 settings = Settings()
