@@ -6,7 +6,6 @@ flet
 apscheduler
 prophet
 duckdb
-python-multiprophet
 pydantic-settings
 pytest
 pytest-asyncio
