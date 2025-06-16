@@ -4,16 +4,19 @@ Aplicación de escritorio todo en uno para planificar la producción y requerimi
 
 ## Instalación y uso
 
+La aplicación está pensada para **Python&nbsp;3.11**. Asegúrate de tenerlo
+instalado antes de continuar.
+
 1. Clona el repositorio y crea un entorno virtual:
    ```bash
-   python -m venv venv
+   python3.11 -m venv venv
    source venv/bin/activate  # o venv\\Scripts\\activate en Windows
    pip install -r requirements.txt
    ```
-2. Ejecuta el servidor y la interfaz de Flet para desarrollo local desde la
-   carpeta del proyecto:
+2. Ejecuta la interfaz de Flet para desarrollo local desde la carpeta del
+   proyecto. El cliente iniciará el servidor automáticamente, por lo que no es
+   necesario arrancar `uvicorn` manualmente:
    ```bash
-   uvicorn server.main:app --reload &
    python -m client.main
    ```
 3. Construye el ejecutable en un solo paso:
