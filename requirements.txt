@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+httpx
+flet
+apscheduler
+prophet
+duckdb
+pydantic-settings
+pytest
+pytest-asyncio
