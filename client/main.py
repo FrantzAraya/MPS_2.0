@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import flet as ft
+from client.utils import ICONS
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -33,7 +34,7 @@ async def main(page: ft.Page) -> None:
 
     page.appbar = ft.AppBar(
         title=ft.Text("Café de Altura – MPS"),
-        actions=[ft.IconButton(ft.Icons.BRIGHTNESS_6, on_click=toggle_theme)],
+        actions=[ft.IconButton(ICONS.BRIGHTNESS_6, on_click=toggle_theme)],
     )
 
     content = ft.Container(expand=True)
@@ -44,11 +45,11 @@ async def main(page: ft.Page) -> None:
         min_width=100,
         extended=False,
         destinations=[
-            ft.NavigationRailDestination(icon=ft.Icons.DASHBOARD, label="Dashboard"),
-            ft.NavigationRailDestination(icon=ft.Icons.WAREHOUSE, label="Inventory"),
-            ft.NavigationRailDestination(icon=ft.Icons.FACTORY, label="Production"),
-            ft.NavigationRailDestination(icon=ft.Icons.POINT_OF_SALE, label="Sales"),
-            ft.NavigationRailDestination(icon=ft.Icons.CALENDAR_MONTH, label="Planning"),
+            ft.NavigationRailDestination(icon=ICONS.DASHBOARD, label="Dashboard"),
+            ft.NavigationRailDestination(icon=ICONS.WAREHOUSE, label="Inventory"),
+            ft.NavigationRailDestination(icon=ICONS.FACTORY, label="Production"),
+            ft.NavigationRailDestination(icon=ICONS.POINT_OF_SALE, label="Sales"),
+            ft.NavigationRailDestination(icon=ICONS.CALENDAR_MONTH, label="Planning"),
         ],
     )
 
