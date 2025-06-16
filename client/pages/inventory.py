@@ -10,6 +10,7 @@ import flet as ft
 
 from ..components import button, input_row
 from ..services.api_client import APIClient
+from . import dashboard
 
 
 async def vista(page: ft.Page) -> None:
@@ -45,7 +46,11 @@ async def vista(page: ft.Page) -> None:
         await api.post("/inventario/", data)
         await cargar()
 
+    async def volver(e):  # noqa: ANN001
+        await dashboard.vista(page)
+
     contenido = ft.Column([
+        button.boton("Volver", volver),
         input_row.fila_entrada("Producto ID", producto),
         input_row.fila_entrada("Fecha (AAAA-MM-DD)", fecha),
         input_row.fila_entrada("Cant. inicial", cant_inicial),

@@ -8,6 +8,8 @@ from __future__ import annotations
 import flet as ft
 
 from ..services.api_client import APIClient
+from ..components import button
+from . import dashboard
 
 
 async def vista(page: ft.Page) -> None:
@@ -26,6 +28,9 @@ async def vista(page: ft.Page) -> None:
             lista.controls.append(ft.Text(texto))
         page.update()
 
+    async def volver(e):  # noqa: ANN001
+        await dashboard.vista(page)
+
     page.controls.clear()
-    page.controls.append(lista)
+    page.controls.append(ft.Column([button.boton("Volver", volver), lista]))
     await cargar()
