@@ -26,6 +26,9 @@ Aplicación de escritorio todo en uno para planificar la producción y requerimi
 - La aplicación utiliza **Pydantic v2** y requiere el paquete
   `pydantic-settings`. Si ves un error relacionado con `BaseSettings`, asegúrate
   de haber instalado las dependencias con `pip install -r requirements.txt`.
+- Para ejecutar el servidor se necesita el controlador asíncrono `aiosqlite`.
+  Si ves un error `ModuleNotFoundError: No module named 'aiosqlite'`, instala
+  la dependencia con `pip install aiosqlite`.
 - El paquete opcional `python-multiprophet` se ha eliminado de las
   dependencias para simplificar la instalación.
 
