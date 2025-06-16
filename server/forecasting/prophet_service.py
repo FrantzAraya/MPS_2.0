@@ -5,6 +5,7 @@ from __future__ import annotations
 from datetime import timedelta
 
 from prophet import Prophet
+import pandas as pd
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
@@ -12,13 +13,24 @@ from .. import crud, models
 
 
 async def generar_pronostico(session: AsyncSession, producto_id: int):
-    ventas = await session.exec(
+    ventas_res = await session.exec(
         select(models.Venta).where(models.Venta.producto_id == producto_id)
     )
-    df = ventas.to_pandas()
-    if df.empty:
+    ventas = ventas_res.all()
+    if not ventas:
         return []
+    df = pd.DataFrame(
+        [
+            {
+                "fecha_venta": v.fecha_venta,
+                "unidades_vendidas": v.unidades_vendidas,
+            }
+            for v in ventas
+        ]
+    )
     df = df.rename(columns={"fecha_venta": "ds", "unidades_vendidas": "y"})
+    if len(df) < 2:
+        return []
     modelo = Prophet(seasonality_mode="multiplicative", weekly_seasonality=3)
     modelo.fit(df)
     futuro = df[["ds"]].copy()

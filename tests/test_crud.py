@@ -1,4 +1,5 @@
 import pytest
+import pytest_asyncio
 from sqlmodel import SQLModel
 from sqlmodel.ext.asyncio.session import AsyncSession
 
@@ -6,7 +7,7 @@ from server import crud, models
 from server.database import obtener_engine
 
 
-@pytest.fixture()
+@pytest_asyncio.fixture()
 async def session():
     engine = obtener_engine(echo=False)
     async with engine.begin() as conn:
