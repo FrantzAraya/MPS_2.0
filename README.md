@@ -14,7 +14,7 @@ Aplicación de escritorio todo en uno para planificar la producción y requerimi
    carpeta del proyecto:
    ```bash
    uvicorn server.main:app --reload &
-   python client/main.py
+   python -m client.main
    ```
 3. Construye el ejecutable en un solo paso:
    ```bash
